@@ -1,0 +1,14 @@
+def moving_average(a, k):
+  sum = 0
+  for i in range(k):
+    sum += a[i]
+  window_sum = [sum]
+  left, right = 0, k - 1
+  while right + 1 < len(a):
+    sum -= a[left]
+    left += 1
+    right += 1
+    sum += a[right]
+    window_sum.append(sum)
+  return [x * 1.0 / k for x in window_sum]
+print(moving_average([1,2,3,4,8], 3))
